@@ -5,15 +5,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /*
 public class DataStructure {
-
-
     BasicInformation basicInformation;
     DestinationInformation destinationInformation;
-
     public DataStructure(String name, String post, Date dateStart, Date dateEnd, String adressStart, String adressEnd) {
         this.basicInformation = new BasicInformation(name, post, dateStart, dateEnd);
         this.destinationInformation = new DestinationInformation(this.basicInformation, adressStart, adressEnd);
-
     }
 }
 */
@@ -23,7 +19,7 @@ public class DataStructure {
 
     private static final AtomicInteger COUNTER = new AtomicInteger();
 
-    private final int id;
+    private int id;
     private String name;
     private String post;
     private String dateStart;
@@ -32,8 +28,8 @@ public class DataStructure {
     private String addressEnd;
 
 
-    public DataStructure(String name, String post, String dateStart, String dateEnd, String addressStart, String addressEnd) {
-        this.id = COUNTER.getAndIncrement();
+    public DataStructure(int id , String name, String post, String dateStart, String dateEnd, String addressStart, String addressEnd) {
+        this.id = id;
         this.name = name;
         this.post = post;
         this.dateStart = dateStart;
@@ -42,16 +38,22 @@ public class DataStructure {
         this.addressEnd = addressEnd;
     }
 
-    public DataStructure(String name, String post, String dateStart, String addressStart, String addressEnd) {
-        this.id = COUNTER.getAndIncrement();
+    public DataStructure(int id, String name, String post, String dateStart, String dateEnd) {
+        this.id = id;
         this.name = name;
         this.post = post;
         this.dateStart = dateStart;
-        this.addressStart = addressStart;
-        this.addressEnd = addressEnd;
+        this.dateEnd = dateEnd;
     }
 
+
+
     //Наличие геттеров, сеттеров и дурацкого конструктора необходимо для работы преобразования из/в json
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -113,4 +115,3 @@ public class DataStructure {
 
 
 }
-
