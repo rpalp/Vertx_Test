@@ -2,16 +2,13 @@ package com.alp.study;
 
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.requery.Persistable;
 import io.requery.cache.EntityCacheBuilder;
-import io.requery.cache.WeakEntityCache;
-import io.requery.jackson.EntityMapper;
 import io.requery.meta.EntityModel;
 import io.requery.reactivex.ReactiveEntityStore;
 import io.requery.reactivex.ReactiveSupport;
 import io.requery.sql.*;
-import com.alp.study.model.Models;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -21,18 +18,11 @@ import javax.cache.CacheManager;
 import javax.cache.Caching;
 import javax.cache.spi.CachingProvider;
 
-public class DBConfiguration {
+public class RequeryConfiguration {
 
     private String dbUrl="jdbc:mysql://172.17.0.2:3306/db_delivery";
     private String user="admin";
     private String pass="s1mpletooR";
-
-
-
-    public ObjectMapper objectMapper(EntityDataStore entityDataStore) {
-        return new EntityMapper(Models.DEFAULT, entityDataStore);
-    }
-
 
 
     public ReactiveEntityStore<Persistable> provideDataStore() {
@@ -66,9 +56,13 @@ public class DBConfiguration {
                         .build())
                 .build();
 
-//        SchemaModifier tables = new SchemaModifier(configuration);
-//        tables.createTables(TableCreationMode.DROP_CREATE);
+        //recreateTables(configuration);
 
         return  ReactiveSupport.toReactiveStore(new EntityDataStore<Persistable>(configuration));
+    }
+
+    private void recreateTables (Configuration configuration) {
+        SchemaModifier tables = new SchemaModifier(configuration);
+        tables.createTables(TableCreationMode.DROP_CREATE);
     }
 }

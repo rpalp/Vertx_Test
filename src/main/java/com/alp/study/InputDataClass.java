@@ -2,20 +2,7 @@ package com.alp.study;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-
-/*
-public class DataStructure {
-    BasicInformation basicInformation;
-    DestinationInformation destinationInformation;
-    public DataStructure(String name, String post, Date dateStart, Date dateEnd, String adressStart, String adressEnd) {
-        this.basicInformation = new BasicInformation(name, post, dateStart, dateEnd);
-        this.destinationInformation = new DestinationInformation(this.basicInformation, adressStart, adressEnd);
-    }
-}
-*/
-
-
-public class DataStructure {
+public class InputDataClass {
 
     private static final AtomicInteger COUNTER = new AtomicInteger();
 
@@ -28,7 +15,7 @@ public class DataStructure {
     private String addressEnd;
 
 
-    public DataStructure(int id , String name, String post, String dateStart, String dateEnd, String addressStart, String addressEnd) {
+    public InputDataClass(int id , String name, String post, String dateStart, String dateEnd, String addressStart, String addressEnd) {
         this.id = id;
         this.name = name;
         this.post = post;
@@ -38,7 +25,7 @@ public class DataStructure {
         this.addressEnd = addressEnd;
     }
 
-    public DataStructure(int id, String name, String post, String dateStart, String dateEnd) {
+    public InputDataClass(int id, String name, String post, String dateStart, String dateEnd) {
         this.id = id;
         this.name = name;
         this.post = post;
@@ -108,7 +95,7 @@ public class DataStructure {
     }
 
 
-    public DataStructure() {
+    public InputDataClass() {
         this.id = COUNTER.getAndIncrement();
     }
 
