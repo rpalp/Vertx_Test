@@ -20,7 +20,7 @@ public class GeoData {
     static GeoApiContext geoApiContext;
 
     static {
-        String googleMapsApiKey = "AIzaSyC4YHX9ZQAZktgk_XJZ8SKvRQhBj9BNxm0";
+        String googleMapsApiKey = "";
         if (googleMapsApiKey != null) {
             geoApiContext = new GeoApiContext().setApiKey(googleMapsApiKey);
         } else {
